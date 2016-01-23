@@ -1,0 +1,52 @@
+[color]
+	ui = true
+[user]
+	name = Joseph An
+	email = an.joseph891@gmail.com
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
+[core]
+        editor = vim
+	excludesfile = /Users/joseph/.gitignore_global
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[push]
+	default = simple
+[pull]
+	rebase = true
+[alias]
+        s = status -sb
+        lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)[%an]%Creset' --abbrev-commit --date=relative --decorate
+
+          # list last commits
+        l = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cgreen\\ (%cr)\\ %Cblue\\ [%cn]" --decorate
+
+        ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+
+          # display file changes per commit
+        ls = log --pretty=format:\"%C(yellow)%h %Cgreen(%cr)%Creset %s %C(bold blue)[%cn]%Creset\" --name-status
+
+        lf = log ..@{u} --stat
+
+          # display all commits today
+        lt = log --stat --since='1 Day Ago' --graph --pretty=oneline --abbrev-commit --date=relative
+
+          # grep commit messages
+        lgr = !sh -c 'git l --grep=$1 --max-count=20' - # search
+
+        pp = pull
+        rp = pull --rebase=true
+        f = fetch
+
+        pr = !hub pull-request -m
+        ci = !hub ci-status -v
+        view =  !hub browse -- tree/$(git rev-parse --abbrev-ref HEAD)
+
+        cr =  !hub browse -- pull/"$1"/files
+        pb = !git push -u origin $(git rev-parse --abbrev-ref HEAD)
