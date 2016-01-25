@@ -106,5 +106,10 @@ if executable("ag")
    let g:ctrlp_use_caching = 0
 endif
 
+let g:ctrlp_custom_ignore = {
+           \ 'dir': 'bower_components\|build\|dist\|docs\|export\|node_modules\|DS_Store\|git',
+           \ 'file': '\.meta$'
+           \ }
+
 let g:rspec_command = "!bundle exec rspec -f d -c {spec}"
 nmap <silent> z/ :nohlsearch<CR>
