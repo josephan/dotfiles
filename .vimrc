@@ -118,3 +118,5 @@ nmap zh ^
 nmap zl $
 vmap zh ^
 vmap zl $
+
+nmap gr gT
