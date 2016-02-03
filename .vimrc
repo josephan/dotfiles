@@ -4,7 +4,6 @@ filetype off
 set noswapfile
 set number
 set noswapfile
-set cursorline
 set autoindent
 set hlsearch
 set ignorecase
@@ -80,6 +79,8 @@ nnoremap <leader>aa :A<CR>
 nnoremap <leader>av :AV<CR>
 nnoremap <leader>at :AT<CR>
 
+map <leader>gb :Gblame<CR>
+
 nmap gb :NERDTreeToggle<CR>
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
@@ -113,3 +114,7 @@ let g:ctrlp_custom_ignore = {
 
 let g:rspec_command = "!bundle exec rspec -f d -c {spec}"
 nmap <silent> z/ :nohlsearch<CR>
+nmap zh ^
+nmap zl $
+vmap zh ^
+vmap zl $
