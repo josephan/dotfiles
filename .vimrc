@@ -39,6 +39,7 @@ Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-eneuch'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'christoomey/vim-tmux-navigator'
@@ -90,6 +91,7 @@ nnoremap g/ :Ack "\b<C-R><C-W>\b"<CR>:cw<CR>
 noremap <Tab> <c-w><c-w>
 noremap <S-Tab> <c-w>w
 noremap <Leader>s :update<CR>
+nnoremap zr :CtrlPMRUFiles<CR>
 
 set splitbelow
 set splitright
