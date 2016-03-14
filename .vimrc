@@ -60,7 +60,13 @@ set expandtab
 set shiftwidth=2
 set softtabstop=2
 set number
+set background=dark
 colorscheme Tomorrow-Night-Eighties
+set guioptions-=L
+set guioptions-=T
+set guioptions-=r
+set cursorline 
+set guioptions-=e
 
 vmap <Leader>y "+y
 nmap <Leader>p "+p
@@ -73,6 +79,7 @@ map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>ts :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
+let g:rspec_runner = "os_x_iterm2"
 " Lookup current word
 nnoremap gl :OnlineThesaurusCurrentWord<CR>
 
