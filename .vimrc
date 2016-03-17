@@ -79,7 +79,13 @@ map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>ts :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
-let g:rspec_runner = "os_x_iterm2"
+if has("gui_macvim")
+  let g:rspec_runner = "os_x_iterm"
+  let g:rspec_command = "bundle exec rspec -f d -c {spec}"
+else
+  let g:rspec_runner = "os_x_iterm"
+  let g:rspec_command = "!bundle exec rspec -f d -c {spec}"
+endif
 " Lookup current word
 nnoremap gl :OnlineThesaurusCurrentWord<CR>
 
@@ -121,7 +127,6 @@ let g:ctrlp_custom_ignore = {
            \ 'file': '\.meta$'
            \ }
 
-let g:rspec_command = "!bundle exec rspec -f d -c {spec}"
 nmap <silent> z/ :nohlsearch<CR>
 nmap zh ^
 nmap zl $
