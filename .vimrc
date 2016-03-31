@@ -60,13 +60,13 @@ set expandtab
 set shiftwidth=2
 set softtabstop=2
 set number
-set background=dark
+set background=light
 colorscheme Tomorrow-Night-Eighties
 set guioptions-=L
 set guioptions-=T
 set guioptions-=r
-set cursorline 
 set guioptions-=e
+set cursorline 
 
 vmap <Leader>y "+y
 nmap <Leader>p "+p
