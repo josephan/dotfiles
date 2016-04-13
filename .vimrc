@@ -66,6 +66,7 @@ set guioptions-=L
 set guioptions-=T
 set guioptions-=r
 set guioptions-=e
+set gfn=Menlo:h12
 set cursorline 
 
 vmap <Leader>y "+y
@@ -126,6 +127,11 @@ let g:ctrlp_custom_ignore = {
            \ 'dir': 'bower_components\|build\|dist\|docs\|export\|node_modules\|DS_Store\|git',
            \ 'file': '\.meta$'
            \ }
+
+let g:ctrlp_prompt_mappings = {
+    \ 'AcceptSelection("e")': ['<c-t>'],
+    \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
+    \ }
 
 nmap <silent> z/ :nohlsearch<CR>
 nmap zh ^
