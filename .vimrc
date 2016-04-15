@@ -133,6 +133,8 @@ let g:ctrlp_prompt_mappings = {
     \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
     \ }
 
+let g:user_emmet_leader_key='<C-Z>'
+
 nmap <silent> z/ :nohlsearch<CR>
 nmap zh ^
 nmap zl $
