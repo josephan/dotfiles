@@ -97,8 +97,7 @@ nnoremap <leader>at :AT<CR>
 
 map <leader>gb :Gblame<CR>
 
-nmap gb :NERDTreeToggle<CR>
-map <Leader>n <plug>NERDTreeTabsToggle<CR>
+nmap gb :NERDTreeTabsToggle<CR>
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
