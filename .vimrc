@@ -50,7 +50,6 @@ Plugin 'beloglazov/vim-online-thesaurus'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'mileszs/ack.vim'
 Plugin 'mattn/emmet-vim'
-Plugin 'jistr/vim-nerdtree-tabs'
 
 call vundle#end()
 filetype plugin indent on
@@ -97,7 +96,7 @@ nnoremap <leader>at :AT<CR>
 
 map <leader>gb :Gblame<CR>
 
-nmap gb :NERDTreeTabsToggle<CR>
+nmap gb :NERDTreeToggle<CR>
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
@@ -150,5 +149,3 @@ vnoremap <silent> # :<C-U>
  \gvy?<C-R><C-R>=substitute(
  \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
  \gV:call setreg('"', old_reg, old_regtype)<CR>
-
-let g:nerdtree_tabs_open_on_gui_startup=0
