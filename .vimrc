@@ -66,7 +66,7 @@ set guioptions-=L
 set guioptions-=T
 set guioptions-=r
 set guioptions-=e
-set gfn=Menlo:h12
+set gfn=Menlo:h13
 set cursorline 
 
 vmap <Leader>y "+y
