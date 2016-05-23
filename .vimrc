@@ -50,6 +50,8 @@ Plugin 'beloglazov/vim-online-thesaurus'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'mileszs/ack.vim'
 Plugin 'mattn/emmet-vim'
+Plugin 'mustache/vim-mustache-handlebars'
+Plugin 'othree/html5.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -61,7 +63,7 @@ set shiftwidth=2
 set softtabstop=2
 set number
 set background=light
-colorscheme Tomorrow-Night-Eighties
+colorscheme Tomorrow-Night
 set guioptions-=L
 set guioptions-=T
 set guioptions-=r
