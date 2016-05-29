@@ -42,16 +42,17 @@ Plugin 'tpope/vim-surround'
 Plugin 'digitaltoad/vim-pug'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tomtom/tcomment_vim'
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'scrooloose/syntastic'
+" Plugin 'christoomey/vim-tmux-navigator'
+" Plugin 'scrooloose/syntastic'
 Plugin 'slim-template/vim-slim.git'
 Plugin 'thoughtbot/vim-rspec'
-Plugin 'beloglazov/vim-online-thesaurus'
-Plugin 'elixir-lang/vim-elixir'
+" Plugin 'beloglazov/vim-online-thesaurus'
+" Plugin 'elixir-lang/vim-elixir'
 Plugin 'mileszs/ack.vim'
 Plugin 'mattn/emmet-vim'
-Plugin 'mustache/vim-mustache-handlebars'
-Plugin 'othree/html5.vim'
+" Plugin 'mustache/vim-mustache-handlebars'
+" Plugin 'othree/html5.vim'
+Plugin 'hail2u/vim-css3-syntax'
 
 call vundle#end()
 filetype plugin indent on
@@ -63,7 +64,7 @@ set shiftwidth=2
 set softtabstop=2
 set number
 set background=light
-colorscheme Tomorrow-Night
+colorscheme Tomorrow-Night-Eighties
 set guioptions-=L
 set guioptions-=T
 set guioptions-=r
