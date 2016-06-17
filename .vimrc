@@ -53,6 +53,7 @@ Plugin 'mattn/emmet-vim'
 " Plugin 'mustache/vim-mustache-handlebars'
 " Plugin 'othree/html5.vim'
 Plugin 'hail2u/vim-css3-syntax'
+Plugin 'jiangmiao/auto-pairs'
 
 call vundle#end()
 filetype plugin indent on
@@ -100,6 +101,7 @@ nnoremap <leader>at :AT<CR>
 map <leader>gb :Gblame<CR>
 
 nmap gb :NERDTreeToggle<CR>
+let NERDTreeShowHidden=1
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
