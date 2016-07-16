@@ -54,6 +54,8 @@ Plugin 'mattn/emmet-vim'
 " Plugin 'othree/html5.vim'
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'jiangmiao/auto-pairs'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
 
 call vundle#end()
 filetype plugin indent on
@@ -64,13 +66,13 @@ set expandtab
 set shiftwidth=2
 set softtabstop=2
 set number
-set background=light
-colorscheme Tomorrow-Night-Eighties
+set background=dark
+colorscheme solarized
 set guioptions-=L
 set guioptions-=T
 set guioptions-=r
 set guioptions-=e
-set gfn=Menlo:h13
+set gfn=Menlo:h14
 set cursorline 
 
 vmap <Leader>y "+y
@@ -89,7 +91,7 @@ if has("gui_macvim")
   let g:rspec_command = "bundle exec rspec -f d -c {spec}"
 else
   let g:rspec_runner = "os_x_iterm"
-  let g:rspec_command = "!bundle exec rspec -f d -c {spec}"
+  let g:rspec_command = "bundle exec rspec -f d -c {spec}"
 endif
 " Lookup current word
 nnoremap gl :OnlineThesaurusCurrentWord<CR>
@@ -134,6 +136,8 @@ let g:ctrlp_custom_ignore = {
            \ }
 
 let g:user_emmet_leader_key='<C-Z>'
+
+let g:jsx_ext_required = 0
 
 nmap <silent> z/ :nohlsearch<CR>
 nmap zh ^
