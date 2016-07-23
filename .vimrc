@@ -66,8 +66,7 @@ set expandtab
 set shiftwidth=2
 set softtabstop=2
 set number
-set background=dark
-colorscheme solarized
+colorscheme Monokai
 set guioptions-=L
 set guioptions-=T
 set guioptions-=r
