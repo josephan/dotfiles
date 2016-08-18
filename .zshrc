@@ -1,5 +1,6 @@
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/joseph/.oh-my-zsh
+export REACT_EDITOR=mvim
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -53,7 +54,7 @@ plugins=(git jira)
 
 # User configuration
 
-export PATH="/Users/joseph/.rbenv/shims:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH="/Users/joseph/.rbenv/shims:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/joseph/Library/Android/sdk/platform-tools"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -86,3 +87,6 @@ source $ZSH/oh-my-zsh.sh
 # export NVM_DIR="/Users/joseph/.nvm"
 # [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 # [[ -s "$HOME/.avn/bin/avn.sh" ]] && source "$HOME/.avn/bin/avn.sh" # load avn
+
+alias android-emulator="/Users/joseph/Library/Android/sdk/tools/emulator -netdelay none -netspeed full -avd Nexus_6P_API_23"
+alias r="rails"
