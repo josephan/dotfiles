@@ -1,6 +1,7 @@
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/joseph/.oh-my-zsh
 export REACT_EDITOR=mvim
+export ANDROID_HOME=/Users/joseph/Library/Android/sdk
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/

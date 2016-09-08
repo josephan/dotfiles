@@ -45,6 +45,7 @@ Plugin 'thoughtbot/vim-rspec'
 Plugin 'mileszs/ack.vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'jiangmiao/auto-pairs'
+Plugin 'terryma/vim-multiple-cursors'
 
 call vundle#end()
 filetype plugin indent on
@@ -56,7 +57,11 @@ set shiftwidth=2
 set softtabstop=2
 set number
 set background=dark
-colorscheme solarized
+colorscheme Monokai
+if has("gui_running");
+  colorscheme solarized
+endif
+
 set guioptions-=L
 set guioptions-=T
 set guioptions-=r
