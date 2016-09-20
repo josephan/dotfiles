@@ -50,6 +50,8 @@ Plugin 'terryma/vim-multiple-cursors'
 call vundle#end()
 filetype plugin indent on
 
+autocmd FileType python set textwidth=79|set shiftwidth=4|set tabstop=4|set softtabstop=4|set shiftround
+
 syntax on
 filetype plugin indent on
 set expandtab
@@ -57,10 +59,6 @@ set shiftwidth=2
 set softtabstop=2
 set number
 set background=dark
-colorscheme Monokai
-if has("gui_running");
-  colorscheme solarized
-endif
 
 set guioptions-=L
 set guioptions-=T
@@ -81,9 +79,11 @@ map <Leader>ts :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
 if has("gui_macvim")
+  colorscheme solarized
   let g:rspec_runner = "os_x_iterm"
   let g:rspec_command = "bundle exec rspec -f d -c {spec}"
 else
+  colorscheme Monokai
   let g:rspec_runner = "os_x_iterm"
   let g:rspec_command = "bundle exec rspec -f d -c {spec}"
 endif
