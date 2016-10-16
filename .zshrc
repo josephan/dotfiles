@@ -2,6 +2,7 @@
 export ZSH=/Users/joseph/.oh-my-zsh
 export REACT_EDITOR=mvim
 export ANDROID_HOME=/Users/joseph/Library/Android/sdk
+export PATH=$PATH
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -55,7 +56,7 @@ plugins=(git jira)
 
 # User configuration
 
-export PATH="/Users/joseph/.rbenv/shims:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/joseph/Library/Android/sdk/platform-tools"
+export PATH="/Users/joseph/.rbenv/shims:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/joseph/Library/Android/sdk/platform-tools:/opt/local/bin:/opt/local/sbin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -90,4 +91,5 @@ source $ZSH/oh-my-zsh.sh
 # [[ -s "$HOME/.avn/bin/avn.sh" ]] && source "$HOME/.avn/bin/avn.sh" # load avn
 
 alias android-emulator="/Users/joseph/Library/Android/sdk/tools/emulator -netdelay none -netspeed full -avd Nexus_6P_API_23"
+alias sc="wine ~/.wine/drive_c/Program\ Files/Starcraft/StarCraft.exe"
 alias r="rails"
