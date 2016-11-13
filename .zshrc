@@ -93,3 +93,13 @@ source $ZSH/oh-my-zsh.sh
 alias android-emulator="/Users/joseph/Library/Android/sdk/tools/emulator -netdelay none -netspeed full -avd Nexus_6P_API_23"
 alias sc="wine ~/.wine/drive_c/Program\ Files/Starcraft/StarCraft.exe"
 alias r="rails"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f /Users/joseph/Library/google-cloud-sdk/path.zsh.inc ]; then
+  source '/Users/joseph/Library/google-cloud-sdk/path.zsh.inc'
+fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f /Users/joseph/Library/google-cloud-sdk/completion.zsh.inc ]; then
+  source '/Users/joseph/Library/google-cloud-sdk/completion.zsh.inc'
+fi

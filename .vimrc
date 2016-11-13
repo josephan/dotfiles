@@ -46,6 +46,7 @@ Plugin 'mileszs/ack.vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'terryma/vim-multiple-cursors'
+Plugin 'elixir-lang/vim-elixir'
 
 call vundle#end()
 filetype plugin indent on
@@ -79,11 +80,11 @@ map <Leader>ts :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
 if has("gui_macvim")
-  colorscheme solarized
+  colorscheme onedark
   let g:rspec_runner = "os_x_iterm"
   let g:rspec_command = "bundle exec rspec -f d -c {spec}"
 else
-  colorscheme Monokai
+  colorscheme onedark
   let g:rspec_runner = "os_x_iterm"
   let g:rspec_command = "bundle exec rspec -f d -c {spec}"
 endif
