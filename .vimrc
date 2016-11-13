@@ -46,7 +46,6 @@ Plugin 'mileszs/ack.vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'terryma/vim-multiple-cursors'
-Plugin 'elixir-lang/vim-elixir'
 
 call vundle#end()
 filetype plugin indent on
