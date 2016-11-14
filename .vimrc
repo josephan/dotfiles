@@ -125,7 +125,7 @@ if executable("ag")
 endif
 
 let g:ctrlp_custom_ignore = {
-           \ 'dir': 'bower_components\|build\|dist\|docs\|export\|node_modules\|DS_Store\|git',
+           \ 'dir': 'deps\|bower_components\|build\|dist\|docs\|export\|node_modules\|DS_Store\|git',
            \ 'file': '\.meta$'
            \ }
 
