@@ -1,4 +1,6 @@
+" Turns off improved Vi's features
 set nocompatible
+
 filetype off
 
 set noswapfile
@@ -28,13 +30,20 @@ augroup END
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-Plugin 'sheerun/vim-polyglot'
+" Plugin 'sheerun/vim-polyglot'
+" Languages
+Plugin 'elixir-lang/vim-elixir'
+Plugin 'OrangeT/vim-csharp'
+Plugin 'pangloss/vim-javascript'
+
 Plugin 'flazz/vim-colorschemes'
+Plugin 'rakr/vim-one'
 Plugin 'vim-scripts/a.vim'
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-scripts/SearchComplete'
 Plugin 'tpope/vim-rails'
-Plugin 'ervandew/supertab'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'larrylv/ycm-elixir'
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
@@ -47,8 +56,10 @@ Plugin 'mattn/emmet-vim'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'avdgaag/vim-phoenix'
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
+" Plugin 'SirVer/ultisnips'
+" Plugin 'honza/vim-snippets'
+Plugin 'isRuslan/vim-es6'
+Plugin 'godlygeek/tabular'
 
 call vundle#end()
 filetype plugin indent on
@@ -59,9 +70,11 @@ syntax on
 filetype plugin indent on
 set expandtab
 set shiftwidth=2
+set tabstop=4
 set softtabstop=2
 set number
 set background=dark
+let g:one_allow_italics = 1
 
 set guioptions-=L
 set guioptions-=T
@@ -82,16 +95,14 @@ map <Leader>ts :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
 if has("gui_macvim")
-  colorscheme onedark
+  colorscheme one
   let g:rspec_runner = "os_x_iterm"
   let g:rspec_command = "bundle exec rspec -f d -c {spec}"
 else
-  colorscheme onedark
+  colorscheme Monokai
   let g:rspec_runner = "os_x_iterm"
   let g:rspec_command = "bundle exec rspec -f d -c {spec}"
 endif
-" Lookup current word
-nnoremap gl :OnlineThesaurusCurrentWord<CR>
 
 nnoremap <leader>aa :A<CR>
 nnoremap <leader>av :AV<CR>
@@ -101,6 +112,7 @@ map <leader>gb :Gblame<CR>
 
 nmap gb :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
+let g:NERDTreeWinSize = 22 
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
@@ -177,3 +189,6 @@ imap <C-o> <esc>o
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+let $PYTHON_HOME="/usr/local/Cellar/python/2.7.12"
+set colorcolumn=80

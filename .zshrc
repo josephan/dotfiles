@@ -1,8 +1,10 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/joseph/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 export REACT_EDITOR=mvim
-export ANDROID_HOME=/Users/joseph/Library/Android/sdk
-export PATH=$PATH
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export MONO_HOME=/Library/Frameworks/Mono.framework/Versions/Current
+export ASEPRITE=/Applications/Aseprite.app/Contents/MacOS
+export PATH=$MONO_HOME/bin:$ASEPRITE:$PATH
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -52,11 +54,11 @@ ZSH_THEME="crunch"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git jira)
+plugins=(git jira elixir autojump)
 
 # User configuration
 
-export PATH="/Users/joseph/.rbenv/shims:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/joseph/Library/Android/sdk/platform-tools:/opt/local/bin:/opt/local/sbin"
+export PATH="$PATH:$HOME/.rbenv/shims:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/Library/Android/sdk/platform-tools:/opt/local/bin:/opt/local/sbin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -90,9 +92,9 @@ source $ZSH/oh-my-zsh.sh
 # [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 # [[ -s "$HOME/.avn/bin/avn.sh" ]] && source "$HOME/.avn/bin/avn.sh" # load avn
 
-alias android-emulator="/Users/joseph/Library/Android/sdk/tools/emulator -netdelay none -netspeed full -avd Nexus_6P_API_23"
-alias sc="wine ~/.wine/drive_c/Program\ Files/Starcraft/StarCraft.exe"
+alias android-emulator="$HOME/Library/Android/sdk/tools/emulator -netdelay none -netspeed full -avd Nexus_6P_API_23"
 alias r="rails"
+alias v="mvim"
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f /Users/joseph/Library/google-cloud-sdk/path.zsh.inc ]; then
