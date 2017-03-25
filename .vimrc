@@ -1,53 +1,30 @@
-" Turns off improved Vi's features
+" Vundle Plugin Manager setup
 set nocompatible
-
 filetype off
-
-set noswapfile
-set number
-set noswapfile
-set autoindent
-set hlsearch
-set ignorecase
-set smartcase
-
-augroup vimrcEx
-  autocmd!
-
-  " When editing a file, always jump to the last known cursor position.
-  " Don't do it for commit messages, when the position is invalid, or when
-  " inside an event handler (happens when dropping a file on gvim).
-  autocmd BufReadPost *
-    \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
-    \   exe "normal g`\"" |
-    \ endif
-
-  " automatic formatting
-  autocmd BufWritePre *.slim,*.rb :%s/\s\+$//e
-
-augroup END
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-" Plugin 'sheerun/vim-polyglot'
-" Languages
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'OrangeT/vim-csharp'
 Plugin 'pangloss/vim-javascript'
+Plugin 'avdgaag/vim-phoenix'
+Plugin 'isRuslan/vim-es6'
 
 Plugin 'flazz/vim-colorschemes'
 Plugin 'rakr/vim-one'
+
 Plugin 'vim-scripts/a.vim'
-Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-scripts/SearchComplete'
-Plugin 'tpope/vim-rails'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'SirVer/ultisnips'
 Plugin 'larrylv/ycm-elixir'
+
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-fugitive'
-Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-surround'
+
+Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'thoughtbot/vim-rspec'
@@ -55,76 +32,88 @@ Plugin 'mileszs/ack.vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'terryma/vim-multiple-cursors'
-Plugin 'avdgaag/vim-phoenix'
-" Plugin 'SirVer/ultisnips'
-" Plugin 'honza/vim-snippets'
-Plugin 'isRuslan/vim-es6'
-Plugin 'godlygeek/tabular'
 
 call vundle#end()
 filetype plugin indent on
+" Vundle setup ends here
 
-autocmd FileType python set textwidth=79|set shiftwidth=4|set tabstop=4|set softtabstop=4|set shiftround
-
-syntax on
-filetype plugin indent on
-set expandtab
-set shiftwidth=2
-set tabstop=4
-set softtabstop=2
-set number
+" Colorscheme
+colorscheme one
 set background=dark
-let g:one_allow_italics = 1
 
-set guioptions-=L
-set guioptions-=T
-set guioptions-=r
-set guioptions-=e
-set gfn=Menlo:h14
-set cursorline 
+syntax enable
 
+set tabstop=4      " number of visual spaces per TAB
+set softtabstop=2  " number of space in tab when editing 
+set expandtab      " turns TAB into spaces
+
+set number         " show line numbers"
+set showcmd        " show command in bottom bar"
+set cursorline     " highlight current line"
+filetype indent on " load filetype-specific indent files
+
+set wildmenu       " visual autocomplete for command menu
+set lazyredraw     " redraw only when we need to
+set showmatch      " highlight matching brackets
+
+set incsearch      " search as characters are entered
+set hlsearch       " highlight matches
+
+" turn off search higlight
+nmap <silent> z/ :nohlsearch<CR>
+
+" move vertically by visual line
+nnoremap j gj
+nnoremap k gk
+
+" move to beginning/end of line
+nnoremap B ^
+nnoremap E $
+
+" $/^ doesn't do anything
+nnoremap $ <nop>
+nnoremap ^ <nop>
+
+" writes to file
+noremap <Leader>s :update<CR>
+
+" Switch tabs
+nmap gr gT
+
+" ctrl-o in insert mode
+imap <C-o> <esc>o
+
+" Copy and Pasting
 vmap <Leader>y "+y
 nmap <Leader>p "+p
 nmap <Leader>P "+P
 nmap <Leader>y "+y
 vmap <Leader>p "+p
 vmap <Leader>P "+P
-" RSpec.vim mappings
-map <Leader>t :call RunCurrentSpecFile()<CR>
-map <Leader>ts :call RunNearestSpec()<CR>
-map <Leader>l :call RunLastSpec()<CR>
-map <Leader>a :call RunAllSpecs()<CR>
-if has("gui_macvim")
-  colorscheme one
-  let g:rspec_runner = "os_x_iterm"
-  let g:rspec_command = "bundle exec rspec -f d -c {spec}"
-else
-  colorscheme Monokai
-  let g:rspec_runner = "os_x_iterm"
-  let g:rspec_command = "bundle exec rspec -f d -c {spec}"
-endif
 
-nnoremap <leader>aa :A<CR>
-nnoremap <leader>av :AV<CR>
-nnoremap <leader>at :AT<CR>
+" Switch between split views
+noremap <Tab> <c-w><c-w>
+noremap <S-Tab> <c-w>w
 
-map <leader>gb :Gblame<CR>
-
+" NERDTree configuration
 nmap gb :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 let g:NERDTreeWinSize = 22 
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
-nnoremap g/ :Ack "\b<C-R><C-W>\b"<CR>:cw<CR>
-noremap <Tab> <c-w><c-w>
-noremap <S-Tab> <c-w>w
-noremap <Leader>s :update<CR>
-nnoremap zr :CtrlPMRUFiles<CR>
 
-set splitbelow
-set splitright
+" MacVim configs
+set guioptions-=L
+set guioptions-=T
+set guioptions-=r
+set guioptions-=e
+set gfn=Menlo:h14
+
+" UltiSnips configuration
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" Configuration for Python
+autocmd FileType python set textwidth=79|set shiftwidth=4|set tabstop=4|set softtabstop=4|set shiftround
 
 if executable("ag")
    let g:ackprg = 'ag --nogroup --nocolor --column'
@@ -145,16 +134,6 @@ let g:ctrlp_custom_ignore = {
            \ }
 
 let g:user_emmet_leader_key='<C-Z>'
-
-let g:jsx_ext_required = 0
-
-nmap <silent> z/ :nohlsearch<CR>
-nmap zh ^
-nmap zl $
-vmap zh ^
-vmap zl $
-
-nmap gr gT
 
 " Search for selected text, forwards or backwards.
 vnoremap <silent> * :<C-U>
@@ -183,12 +162,20 @@ if has("autocmd")
   autocmd VimEnter * :call SetupCtrlP()
 endif
 
-imap <C-o> <esc>o
+augroup vimrcEx
+  autocmd!
 
-" UltiSnips configuration
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+  " When editing a file, always jump to the last known cursor position.
+  " Don't do it for commit messages, when the position is invalid, or when
+  " inside an event handler (happens when dropping a file on gvim).
+  autocmd BufReadPost *
+    \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
+    \   exe "normal g`\"" |
+    \ endif
 
-let $PYTHON_HOME="/usr/local/Cellar/python/2.7.12"
-set colorcolumn=80
+  " automatic formatting
+  autocmd BufWritePre *.slim,*.rb :%s/\s\+$//e
+
+augroup END
+
+
