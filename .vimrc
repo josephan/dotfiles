@@ -5,6 +5,8 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+Plugin 'VundleVim/Vundle.vim'
+
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'OrangeT/vim-csharp'
 Plugin 'pangloss/vim-javascript'
@@ -18,11 +20,11 @@ Plugin 'vim-scripts/a.vim'
 Plugin 'vim-scripts/SearchComplete'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'SirVer/ultisnips'
-Plugin 'larrylv/ycm-elixir'
 
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-endwise'
 
 Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
@@ -61,6 +63,10 @@ set hlsearch       " highlight matches
 
 " turn off search higlight
 nmap <silent> z/ :nohlsearch<CR>
+
+" Open new split panes to right and bottom, which feels more natural
+set splitbelow
+set splitright
 
 " move vertically by visual line
 nnoremap j gj
