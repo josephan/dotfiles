@@ -13,7 +13,6 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'avdgaag/vim-phoenix'
 Plugin 'isRuslan/vim-es6'
 
-Plugin 'flazz/vim-colorschemes'
 Plugin 'rakr/vim-one'
 
 Plugin 'vim-scripts/a.vim'
@@ -38,6 +37,16 @@ Plugin 'terryma/vim-multiple-cursors'
 call vundle#end()
 filetype plugin indent on
 " Vundle setup ends here
+
+" True color support for iTerm2 for one
+if (empty($TMUX))
+  if (has("nvim"))
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  endif
+  if (has("termguicolors"))
+    set termguicolors
+  endif
+endif
 
 " Colorscheme
 colorscheme one
