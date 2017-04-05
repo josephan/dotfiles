@@ -7,12 +7,6 @@ call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 
-Plugin 'elixir-lang/vim-elixir'
-Plugin 'OrangeT/vim-csharp'
-Plugin 'pangloss/vim-javascript'
-Plugin 'avdgaag/vim-phoenix'
-Plugin 'isRuslan/vim-es6'
-
 Plugin 'rakr/vim-one'
 
 Plugin 'vim-scripts/a.vim'
@@ -24,6 +18,7 @@ Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-dispatch'
 
 Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
@@ -33,6 +28,15 @@ Plugin 'mileszs/ack.vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'terryma/vim-multiple-cursors'
+
+Plugin 'elixir-lang/vim-elixir'
+Plugin 'slashmili/alchemist.vim'
+Plugin 'avdgaag/vim-phoenix'
+
+Plugin 'OrangeT/vim-csharp'
+Plugin 'Omnisharp/omnisharp-vim'
+Plugin 'pangloss/vim-javascript'
+Plugin 'isRuslan/vim-es6'
 
 call vundle#end()
 filetype plugin indent on
