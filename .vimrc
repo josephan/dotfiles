@@ -61,6 +61,7 @@ syntax enable
 set tabstop=4      " number of visual spaces per TAB
 set softtabstop=2  " number of space in tab when editing 
 set expandtab      " turns TAB into spaces
+set noswapfile     " disables .swp files being created
 
 set number         " show line numbers"
 set showcmd        " show command in bottom bar"
@@ -125,6 +126,7 @@ set guioptions-=T
 set guioptions-=r
 set guioptions-=e
 set gfn=Menlo:h14
+autocmd! GUIEnter * set vb t_vb= " Disables bell
 
 " UltiSnips configuration
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -133,6 +135,8 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " Configuration for Python
 autocmd FileType python set textwidth=79|set shiftwidth=4|set tabstop=4|set softtabstop=4|set shiftround
+" Configuration for CSharp
+autocmd FileType csharp set textwidth=79|set shiftwidth=4|set tabstop=4|set softtabstop=4|set shiftround
 
 if executable("ag")
    let g:ackprg = 'ag --nogroup --nocolor --column'
