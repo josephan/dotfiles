@@ -13,6 +13,7 @@ Plugin 'vim-scripts/a.vim'
 Plugin 'vim-scripts/SearchComplete'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'SirVer/ultisnips'
+Plugin 'justinmk/vim-sneak'
 
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-fugitive'
@@ -30,10 +31,11 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'terryma/vim-multiple-cursors'
 
 Plugin 'elixir-lang/vim-elixir'
-Plugin 'slashmili/alchemist.vim'
+" Plugin 'slashmili/alchemist.vim'
 Plugin 'avdgaag/vim-phoenix'
 
-Plugin 'OrangeT/vim-csharp'
+Plugin 'janko-m/vim-test'
+Plugin 'suan/vim-instant-markdown'
 Plugin 'Omnisharp/omnisharp-vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'isRuslan/vim-es6'
@@ -135,8 +137,6 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " Configuration for Python
 autocmd FileType python set textwidth=79|set shiftwidth=4|set tabstop=4|set softtabstop=4|set shiftround
-" Configuration for CSharp
-autocmd FileType csharp set textwidth=79|set shiftwidth=4|set tabstop=4|set softtabstop=4|set shiftround
 
 if executable("ag")
    let g:ackprg = 'ag --nogroup --nocolor --column'
@@ -201,4 +201,10 @@ augroup vimrcEx
 
 augroup END
 
+" Dont auto open markdown files
+let g:instant_markdown_autostart = 0
 
+" vim-test configs
+" make test commands execute using iTerm2
+let test#strategy = "iterm"
+nmap <silent> <leader>t :TestFile<CR>
