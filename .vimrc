@@ -13,7 +13,6 @@ Plugin 'vim-scripts/a.vim'
 Plugin 'vim-scripts/SearchComplete'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'SirVer/ultisnips'
-Plugin 'justinmk/vim-sneak'
 
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-fugitive'
