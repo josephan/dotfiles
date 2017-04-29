@@ -207,3 +207,4 @@ let g:instant_markdown_autostart = 0
 " make test commands execute using iTerm2
 let test#strategy = "iterm"
 nmap <silent> <leader>t :TestFile<CR>
+nmap <silent> <leader>T :TestNearest<CR>

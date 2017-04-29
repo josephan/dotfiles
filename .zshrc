@@ -3,8 +3,6 @@ export ZSH=$HOME/.oh-my-zsh
 export REACT_EDITOR=mvim
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export MONO_HOME=/Library/Frameworks/Mono.framework/Versions/Current
-export ASEPRITE=/Applications/Aseprite.app/Contents/MacOS
-export PATH=$MONO_HOME/bin:$ASEPRITE:$PATH
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -57,8 +55,8 @@ ZSH_THEME="crunch"
 plugins=(git jira elixir autojump)
 
 # User configuration
-
-export PATH="$PATH:$HOME/.rbenv/shims:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/Library/Android/sdk/platform-tools:/opt/local/bin:/opt/local/sbin"
+export PATH="$PATH:/usr/local/bin:$HOME/.rbenv/shims:$HOME/miniconda3/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/Library/Android/sdk/platform-tools:/opt/local/bin:/opt/local/sbin"
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
