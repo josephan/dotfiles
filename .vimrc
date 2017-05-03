@@ -37,6 +37,7 @@ Plugin 'janko-m/vim-test'
 Plugin 'suan/vim-instant-markdown'
 Plugin 'Omnisharp/omnisharp-vim'
 Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
 Plugin 'isRuslan/vim-es6'
 
 call vundle#end()
@@ -59,7 +60,7 @@ set background=dark
 
 syntax enable
 
-set tabstop=4      " number of visual spaces per TAB
+set tabstop=2      " number of visual spaces per TAB
 set softtabstop=2  " number of space in tab when editing 
 set expandtab      " turns TAB into spaces
 set noswapfile     " disables .swp files being created
@@ -126,7 +127,7 @@ set guioptions-=L
 set guioptions-=T
 set guioptions-=r
 set guioptions-=e
-set gfn=Menlo:h14
+set gfn=Menlo:h16
 autocmd! GUIEnter * set vb t_vb= " Disables bell
 
 " UltiSnips configuration
@@ -134,8 +135,12 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
-" Configuration for Python
+" file specific vim configs
+" Python
 autocmd FileType python set textwidth=79|set shiftwidth=4|set tabstop=4|set softtabstop=4|set shiftround
+" HTML
+autocmd FileType html setlocal shiftwidth=2 tabstop=2
+autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 
 if executable("ag")
    let g:ackprg = 'ag --nogroup --nocolor --column'
