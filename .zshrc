@@ -55,7 +55,7 @@ ZSH_THEME="crunch"
 plugins=(git jira elixir autojump)
 
 # User configuration
-export PATH="$PATH:/usr/local/bin:$HOME/.rbenv/shims:$HOME/miniconda3/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/Library/Android/sdk/platform-tools:/opt/local/bin:/opt/local/sbin"
+export PATH="$PATH:/usr/local/bin:$HOME/.rbenv/shims:$HOME/miniconda3/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/Library/Android/sdk/platform-tools:/opt/local/bin:/opt/local/sbin:`yarn global bin`"
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 # export MANPATH="/usr/local/man:$MANPATH"
 

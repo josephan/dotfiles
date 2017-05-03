@@ -142,6 +142,11 @@ autocmd FileType python set textwidth=79|set shiftwidth=4|set tabstop=4|set soft
 autocmd FileType html setlocal shiftwidth=2 tabstop=2
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 
+" javascript prettier and jsx config
+let g:jsx_ext_required = 0
+autocmd FileType javascript.jsx,javascript setlocal formatprg=prettier\ --stdin
+autocmd BufWritePre *.js :normal gggqG
+
 if executable("ag")
    let g:ackprg = 'ag --nogroup --nocolor --column'
 
