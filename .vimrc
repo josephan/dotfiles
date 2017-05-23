@@ -30,8 +30,9 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'terryma/vim-multiple-cursors'
 
 Plugin 'elixir-lang/vim-elixir'
-" Plugin 'slashmili/alchemist.vim'
+Plugin 'slashmili/alchemist.vim'
 Plugin 'avdgaag/vim-phoenix'
+Plugin 'larrylv/ycm-elixir'
 
 Plugin 'janko-m/vim-test'
 Plugin 'suan/vim-instant-markdown'
@@ -62,6 +63,7 @@ syntax enable
 
 set tabstop=2      " number of visual spaces per TAB
 set softtabstop=2  " number of space in tab when editing 
+set shiftwidth=2   " number of spaces with reindent operations
 set expandtab      " turns TAB into spaces
 set noswapfile     " disables .swp files being created
 
@@ -138,14 +140,10 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " file specific vim configs
 " Python
 autocmd FileType python set textwidth=79|set shiftwidth=4|set tabstop=4|set softtabstop=4|set shiftround
-" HTML
-autocmd FileType html setlocal shiftwidth=2 tabstop=2
-autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 
 " javascript prettier and jsx config
 let g:jsx_ext_required = 0
 autocmd FileType javascript.jsx,javascript setlocal formatprg=prettier\ --stdin
-autocmd BufWritePre *.js :normal gggqG
 
 if executable("ag")
    let g:ackprg = 'ag --nogroup --nocolor --column'
@@ -161,7 +159,7 @@ if executable("ag")
 endif
 
 let g:ctrlp_custom_ignore = {
-           \ 'dir': 'deps\|bower_components\|build\|dist\|docs\|export\|node_modules\|DS_Store\|git',
+           \ 'dir': 'deps\|bower_components\|build\|dist\|docs\|export\|node_modules\|DS_Store\|git\|priv\/static$',
            \ 'file': '\.meta$'
            \ }
 
