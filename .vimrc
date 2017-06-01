@@ -216,3 +216,6 @@ let g:instant_markdown_autostart = 0
 let test#strategy = "iterm"
 nmap <silent> <leader>t :TestFile<CR>
 nmap <silent> <leader>T :TestNearest<CR>
+
+" YouCompleteMe configs
+let g:ycm_autoclose_preview_window_after_insertion = 1
