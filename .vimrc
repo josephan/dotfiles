@@ -123,6 +123,7 @@ noremap <S-Tab> <c-w>w
 nmap gb :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 let g:NERDTreeWinSize = 22 
+let NERDTreeIgnore=['\.DS_Store$']
 
 " MacVim configs
 set guioptions-=L
