@@ -8,11 +8,13 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'rakr/vim-one'
+Plugin 'robertmeta/nofrils'
 
 Plugin 'vim-scripts/a.vim'
 Plugin 'vim-scripts/SearchComplete'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'SirVer/ultisnips'
+Plugin 'godlygeek/tabular'
 
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-fugitive'
@@ -34,12 +36,15 @@ Plugin 'slashmili/alchemist.vim'
 Plugin 'avdgaag/vim-phoenix'
 Plugin 'larrylv/ycm-elixir'
 
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'tpope/vim-rails'
+
 Plugin 'janko-m/vim-test'
 Plugin 'suan/vim-instant-markdown'
-Plugin 'Omnisharp/omnisharp-vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'isRuslan/vim-es6'
+Plugin 'mustache/vim-mustache-handlebars'
 
 call vundle#end()
 filetype plugin indent on
@@ -56,14 +61,16 @@ if (empty($TMUX))
 endif
 
 " Colorscheme
-colorscheme one
-set background=dark
+colorscheme nofrils-dark
 
 syntax enable
+
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o " disables autocomment on newline
 
 set tabstop=2      " number of visual spaces per TAB
 set softtabstop=2  " number of space in tab when editing 
 set shiftwidth=2   " number of spaces with reindent operations
+set linespace=3    " number of pixels inbetween each line
 set expandtab      " turns TAB into spaces
 set noswapfile     " disables .swp files being created
 
@@ -130,7 +137,7 @@ set guioptions-=L
 set guioptions-=T
 set guioptions-=r
 set guioptions-=e
-set gfn=Menlo:h16
+set gfn=Inconsolata:h18
 autocmd! GUIEnter * set vb t_vb= " Disables bell
 
 " UltiSnips configuration
@@ -160,11 +167,16 @@ if executable("ag")
 endif
 
 let g:ctrlp_custom_ignore = {
-           \ 'dir': 'deps\|bower_components\|build\|dist\|docs\|export\|node_modules\|DS_Store\|git\|priv\/static$',
+           \ 'dir': '_site\|tmp\|deps\|bower_components\|build\|dist\|docs\|export\|node_modules\|DS_Store\|git\|priv\/static$',
            \ 'file': '\.meta$'
            \ }
 
 let g:user_emmet_leader_key='<C-Z>'
+let g:user_emmet_settings = {
+\  'javascript.jsx' : {
+\      'extends' : 'jsx',
+\  },
+\}
 
 " Search for selected text, forwards or backwards.
 vnoremap <silent> * :<C-U>
