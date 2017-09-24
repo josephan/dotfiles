@@ -93,3 +93,4 @@ source $ZSH/oh-my-zsh.sh
 alias android-emulator="$HOME/Library/Android/sdk/tools/emulator -netdelay none -netspeed full -avd Nexus_6P_API_23"
 alias r="rails"
 alias v="mvim"
+alias scheme="rlwrap scheme"

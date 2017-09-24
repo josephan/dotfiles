@@ -1,54 +1,54 @@
-" Vundle Plugin Manager setup
-set nocompatible
-filetype off
+" Plug setup
+call plug#begin('~/.vim/plugged')
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+Plug 'VundleVim/Vundle.vim'
 
-Plugin 'VundleVim/Vundle.vim'
+Plug 'rakr/vim-one'
+Plug 'robertmeta/nofrils'
 
-Plugin 'rakr/vim-one'
-Plugin 'robertmeta/nofrils'
+Plug 'vim-scripts/a.vim'
+Plug 'vim-scripts/SearchComplete'
+Plug 'Valloric/YouCompleteMe'
+Plug 'ervandew/supertab'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'godlygeek/tabular'
 
-Plugin 'vim-scripts/a.vim'
-Plugin 'vim-scripts/SearchComplete'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'SirVer/ultisnips'
-Plugin 'godlygeek/tabular'
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-dispatch'
 
-Plugin 'tpope/vim-sensible'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-endwise'
-Plugin 'tpope/vim-dispatch'
+Plug 'scrooloose/nerdtree'
+Plug 'kien/ctrlp.vim'
+Plug 'tomtom/tcomment_vim'
+Plug 'thoughtbot/vim-rspec'
+Plug 'mileszs/ack.vim'
+Plug 'mattn/emmet-vim'
+Plug 'jiangmiao/auto-pairs'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'pbrisbin/vim-mkdir'
+Plug 'alvan/vim-closetag'
 
-Plugin 'scrooloose/nerdtree'
-Plugin 'kien/ctrlp.vim'
-Plugin 'tomtom/tcomment_vim'
-Plugin 'thoughtbot/vim-rspec'
-Plugin 'mileszs/ack.vim'
-Plugin 'mattn/emmet-vim'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'terryma/vim-multiple-cursors'
+Plug 'elixir-lang/vim-elixir'
+Plug 'slashmili/alchemist.vim'
+Plug 'avdgaag/vim-phoenix'
 
-Plugin 'elixir-lang/vim-elixir'
-Plugin 'slashmili/alchemist.vim'
-Plugin 'avdgaag/vim-phoenix'
-Plugin 'larrylv/ycm-elixir'
+Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-rails'
 
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'tpope/vim-rails'
+Plug 'elmcast/elm-vim'
 
-Plugin 'janko-m/vim-test'
-Plugin 'suan/vim-instant-markdown'
-Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
-Plugin 'isRuslan/vim-es6'
-Plugin 'mustache/vim-mustache-handlebars'
+Plug 'janko-m/vim-test'
+Plug 'suan/vim-instant-markdown'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'isRuslan/vim-es6'
+Plug 'mustache/vim-mustache-handlebars'
 
-call vundle#end()
-filetype plugin indent on
-" Vundle setup ends here
+call plug#end()
+" Plug setup ends here
 
 " True color support for iTerm2 for one
 if (empty($TMUX))
@@ -61,16 +61,18 @@ if (empty($TMUX))
 endif
 
 " Colorscheme
-colorscheme nofrils-dark
+colorscheme one
 
 syntax enable
 
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o " disables autocomment on newline
 
+" Inserts a newline and indent
+inoremap <leader><CR> <CR><C-o>==<C-o>O
 set tabstop=2      " number of visual spaces per TAB
 set softtabstop=2  " number of space in tab when editing 
 set shiftwidth=2   " number of spaces with reindent operations
-set linespace=3    " number of pixels inbetween each line
+set linespace=1    " number of pixels inbetween each line
 set expandtab      " turns TAB into spaces
 set noswapfile     " disables .swp files being created
 
@@ -137,7 +139,7 @@ set guioptions-=L
 set guioptions-=T
 set guioptions-=r
 set guioptions-=e
-set gfn=Inconsolata:h18
+set gfn=Menlo:h14
 autocmd! GUIEnter * set vb t_vb= " Disables bell
 
 " UltiSnips configuration
@@ -232,3 +234,15 @@ nmap <silent> <leader>T :TestNearest<CR>
 
 " YouCompleteMe configs
 let g:ycm_autoclose_preview_window_after_insertion = 1
+
+" snippet config
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+
