@@ -138,7 +138,7 @@ set guioptions-=L
 set guioptions-=T
 set guioptions-=r
 set guioptions-=e
-set gfn=Menlo:h14
+set gfn=Menlo:h16
 autocmd! GUIEnter * set vb t_vb= " Disables bell
 
 " UltiSnips configuration
@@ -257,3 +257,5 @@ let g:UltiSnipsListSnippets="<c-e>"
 " CONFLICT with some plugins like tpope/Endwise
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
+" ctags config
+map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>

@@ -94,3 +94,12 @@ alias android-emulator="$HOME/Library/Android/sdk/tools/emulator -netdelay none 
 alias r="rails"
 alias v="mvim"
 alias scheme="rlwrap scheme"
+
+# Filter theScore AWS Inventory
+function finv () {
+  pushd $HOME/work/ansible-playbooks
+  test -n "$ANSIBLE_VROOT" || source ./ansible/bin/activate
+  ./scripts/filter-inventory $*
+  popd
+  deactivate
+}
