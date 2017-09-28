@@ -168,7 +168,7 @@ if executable("ag")
 endif
 
 let g:ctrlp_custom_ignore = {
-           \ 'dir': '_site\|tmp\|deps\|bower_components\|build\|dist\|docs\|export\|node_modules\|DS_Store\|git\|priv\/static$',
+           \ 'dir': '_site\|tmp\|deps\|coverage\|bower_components\|build\|dist\|docs\|export\|node_modules\|DS_Store\|git\|priv\/static$',
            \ 'file': '\.meta$'
            \ }
 
@@ -256,3 +256,4 @@ let g:UltiSnipsListSnippets="<c-e>"
 " and close the selection list, same as other IDEs.
 " CONFLICT with some plugins like tpope/Endwise
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+

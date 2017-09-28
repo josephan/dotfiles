@@ -12,3 +12,4 @@ DS_Store
 git
 .meta
 deps
+coverage
