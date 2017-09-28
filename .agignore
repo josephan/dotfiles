@@ -1,0 +1,15 @@
+log
+tags
+tmp
+bower_components
+build
+dist
+docs
+export
+node_modules
+DS_Store
+.git
+git
+.meta
+deps
+coverage
