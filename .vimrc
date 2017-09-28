@@ -167,6 +167,7 @@ if executable("ag")
    let g:ctrlp_use_caching = 0
 endif
 
+let g:ctrlp_working_path_mode = 0
 let g:ctrlp_custom_ignore = {
            \ 'dir': '_site\|tmp\|deps\|coverage\|bower_components\|build\|dist\|docs\|export\|node_modules\|DS_Store\|git\|priv\/static$',
            \ 'file': '\.meta$'
@@ -234,28 +235,42 @@ nmap <silent> <leader>T :TestNearest<CR>
 " YouCompleteMe configs
 let g:ycm_autoclose_preview_window_after_insertion = 1
 
+" Ultisnips and YouCompleteMe plays nice
 function! g:UltiSnips_Complete()
-    call UltiSnips#ExpandSnippet()
-    if g:ulti_expand_res == 0
-        if pumvisible()
-            return "\<C-n>"
-        else
-            call UltiSnips#JumpForwards()
-            if g:ulti_jump_forwards_res == 0
-               return "\<TAB>"
-            endif
-        endif
+  call UltiSnips#ExpandSnippet()
+  if g:ulti_expand_res == 0
+    if pumvisible()
+      return "\<C-n>"
+    else
+      call UltiSnips#JumpForwards()
+      if g:ulti_jump_forwards_res == 0
+        return "\<TAB>"
+      endif
     endif
-    return ""
+  endif
+  return ""
 endfunction
 
-au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsListSnippets="<c-e>"
-" this mapping Enter key to <C-y> to chose the current highlight item
-" and close the selection list, same as other IDEs.
-" CONFLICT with some plugins like tpope/Endwise
-inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+function! g:UltiSnips_Reverse()
+  call UltiSnips#JumpBackwards()
+  if g:ulti_jump_backwards_res == 0
+    return "\<C-P>"
+  endif
+
+  return ""
+endfunction
+
+
+if !exists("g:UltiSnipsJumpForwardTrigger")
+  let g:UltiSnipsJumpForwardTrigger = "<tab>"
+endif
+
+if !exists("g:UltiSnipsJumpBackwardTrigger")
+  let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+endif
+
+au InsertEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger     . " <C-R>=g:UltiSnips_Complete()<cr>"
+au InsertEnter * exec "inoremap <silent> " .     g:UltiSnipsJumpBackwardTrigger . " <C-R>=g:UltiSnips_Reverse()<cr>"
 
 " ctags config
 map <C-\> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
