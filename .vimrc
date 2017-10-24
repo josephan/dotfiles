@@ -31,7 +31,6 @@ Plug 'pbrisbin/vim-mkdir'
 Plug 'alvan/vim-closetag'
 
 Plug 'elixir-lang/vim-elixir'
-Plug 'slashmili/alchemist.vim'
 Plug 'avdgaag/vim-phoenix'
 
 Plug 'vim-ruby/vim-ruby'
@@ -43,7 +42,7 @@ Plug 'janko-m/vim-test'
 Plug 'suan/vim-instant-markdown'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
-Plug 'isRuslan/vim-es6'
+Plug 'hail2u/vim-css3-syntax'
 Plug 'mustache/vim-mustache-handlebars'
 
 call plug#end()
@@ -61,6 +60,7 @@ endif
 
 " Colorscheme
 colorscheme one
+set background=dark
 
 syntax enable
 
@@ -260,7 +260,6 @@ function! g:UltiSnips_Reverse()
   return ""
 endfunction
 
-
 if !exists("g:UltiSnipsJumpForwardTrigger")
   let g:UltiSnipsJumpForwardTrigger = "<tab>"
 endif
@@ -271,6 +270,8 @@ endif
 
 au InsertEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger     . " <C-R>=g:UltiSnips_Complete()<cr>"
 au InsertEnter * exec "inoremap <silent> " .     g:UltiSnipsJumpBackwardTrigger . " <C-R>=g:UltiSnips_Reverse()<cr>"
+
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
 
 " ctags config
 map <C-\> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
