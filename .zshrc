@@ -95,6 +95,8 @@ alias r="rails"
 alias v="mvim"
 alias scheme="rlwrap scheme"
 
+export ERL_AFLAGS="-kernel shell_history enabled"
+
 # Filter theScore AWS Inventory
 function finv () {
   pushd $HOME/work/ansible-playbooks
