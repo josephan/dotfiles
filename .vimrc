@@ -279,7 +279,7 @@ map <C-\> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 "smart indent when entering insert mode with i on empty lines
 function! IndentWithI()
     if len(getline('.')) == 0
-        return "\"_ccO"
+        return "\"_cc"
     else
         return "i"
     endif
