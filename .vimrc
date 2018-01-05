@@ -18,9 +18,10 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-rhubarb'
 
 Plug 'scrooloose/nerdtree'
-Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tomtom/tcomment_vim'
 Plug 'thoughtbot/vim-rspec'
 Plug 'mileszs/ack.vim'
@@ -29,21 +30,21 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'pbrisbin/vim-mkdir'
 Plug 'alvan/vim-closetag'
+Plug 'craigemery/vim-autotag'
 
 Plug 'elixir-lang/vim-elixir'
 Plug 'avdgaag/vim-phoenix'
 
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
-
-Plug 'elmcast/elm-vim'
+Plug 'tpope/vim-rbenv'
 
 Plug 'janko-m/vim-test'
 Plug 'suan/vim-instant-markdown'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
-Plug 'hail2u/vim-css3-syntax'
-Plug 'mustache/vim-mustache-handlebars'
+Plug 'isRuslan/vim-es6'
+Plug 'jparise/vim-graphql'
 
 call plug#end()
 " Plug setup ends here
@@ -148,7 +149,7 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " file specific vim configs
 " Python
-autocmd FileType python set textwidth=79|set shiftwidth=4|set tabstop=4|set softtabstop=4|set shiftround
+autocmd FileType python set shiftwidth=4|set tabstop=4|set softtabstop=4|set shiftround
 
 " javascript prettier and jsx config
 let g:jsx_ext_required = 0
@@ -169,7 +170,7 @@ endif
 
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_custom_ignore = {
-           \ 'dir': '_site\|tmp\|deps\|coverage\|bower_components\|build\|dist\|docs\|export\|node_modules\|DS_Store\|git\|priv\/static$',
+           \ 'dir': '_build\|_site\|tmp\|deps\|coverage\|bower_components\|build\|dist\|docs\|export\|node_modules\|DS_Store\|git\|priv\/static$',
            \ 'file': '\.meta$'
            \ }
 
