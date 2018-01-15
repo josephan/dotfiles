@@ -3,6 +3,7 @@ export ZSH=$HOME/.oh-my-zsh
 export REACT_EDITOR=mvim
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export MONO_HOME=/Library/Frameworks/Mono.framework/Versions/Current
+export GH_OAUTH_TOKEN=f8865efa8be9e1d15c9e71ffeade2f93046c2305
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -55,7 +56,7 @@ ZSH_THEME="crunch"
 plugins=(git jira elixir autojump)
 
 # User configuration
-export PATH="$PATH:/usr/local/bin:$HOME/.rbenv/shims:$HOME/miniconda3/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/Library/Android/sdk/platform-tools:/opt/local/bin:/opt/local/sbin:`yarn global bin`"
+export PATH="/usr/local/bin:$HOME/.rbenv/shims:$HOME/miniconda3/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/Library/Android/sdk/platform-tools:/opt/local/bin:/opt/local/sbin:`yarn global bin`:$PATH"
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -94,14 +95,33 @@ alias android-emulator="$HOME/Library/Android/sdk/tools/emulator -netdelay none 
 alias r="rails"
 alias v="mvim"
 alias scheme="rlwrap scheme"
+alias python='/usr/local/bin/python2'
 
 export ERL_AFLAGS="-kernel shell_history enabled"
 
 # Filter theScore AWS Inventory
 function finv () {
-  pushd $HOME/work/ansible-playbooks
+  pushd $HOME/code/ansible-playbooks
   test -n "$ANSIBLE_VROOT" || source ./ansible/bin/activate
   ./scripts/filter-inventory $*
   popd
   deactivate
 }
+
+# Fuzzy-checkout
+# Uses fuzzy matching against git branch names for more lenient checkouts
+function fco {
+	local filter
+	if ! which fzf >/dev/null 2>&1; then
+		echo "Cannot find required tool \`fzf\` - visit https://github.com/junegunn/fzf to install"
+		return 1
+	fi
+
+	branch=`git branch --list \
+					| fzf --height=7 --min-height=5 --reverse --query="$1" --select-1 \
+					| sed -e 's/^[[:space:]\*]*//'`
+
+	[[ -n "$branch" ]] && git checkout "$branch"
+}
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
