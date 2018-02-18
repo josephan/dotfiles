@@ -34,6 +34,7 @@ Plug 'craigemery/vim-autotag'
 
 Plug 'elixir-lang/vim-elixir'
 Plug 'avdgaag/vim-phoenix'
+Plug 'mhinz/vim-mix-format'
 
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
@@ -287,3 +288,5 @@ function! IndentWithI()
     endif
 endfunction
 nnoremap <expr> i IndentWithI()
+
+let g:mix_format_on_save = 1
