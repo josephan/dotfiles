@@ -73,7 +73,7 @@ inoremap <leader><CR> <CR><C-o>==<C-o>O
 set tabstop=2      " number of visual spaces per TAB
 set softtabstop=2  " number of space in tab when editing 
 set shiftwidth=2   " number of spaces with reindent operations
-set linespace=1    " number of pixels inbetween each line
+set linespace=3    " number of pixels inbetween each line
 set expandtab      " turns TAB into spaces
 set noswapfile     " disables .swp files being created
 
@@ -288,5 +288,3 @@ function! IndentWithI()
     endif
 endfunction
 nnoremap <expr> i IndentWithI()
-
-let g:mix_format_on_save = 1
