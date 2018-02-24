@@ -288,3 +288,5 @@ function! IndentWithI()
     endif
 endfunction
 nnoremap <expr> i IndentWithI()
+
+inoremap <leader>; <C-o>A;

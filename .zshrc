@@ -3,7 +3,6 @@ export ZSH=$HOME/.oh-my-zsh
 export REACT_EDITOR=mvim
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export MONO_HOME=/Library/Frameworks/Mono.framework/Versions/Current
-export GH_OAUTH_TOKEN=f8865efa8be9e1d15c9e71ffeade2f93046c2305
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -92,8 +91,10 @@ source $ZSH/oh-my-zsh.sh
 # [[ -s "$HOME/.avn/bin/avn.sh" ]] && source "$HOME/.avn/bin/avn.sh" # load avn
 
 alias android-emulator="$HOME/Library/Android/sdk/tools/emulator -netdelay none -netspeed full -avd Nexus_6P_API_23"
+alias react-native-debugger="open \"rndebugger://set-debugger-loc?host=localhost&port=8081\""
 alias r="rails"
 alias v="mvim"
+alias python='python3'
 alias scheme="rlwrap scheme"
 alias python='/usr/local/bin/python2'
 
@@ -123,5 +124,7 @@ function fco {
 
 	[[ -n "$branch" ]] && git checkout "$branch"
 }
+  
+eval "$(direnv hook zsh)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
