@@ -141,7 +141,7 @@ set guioptions-=L
 set guioptions-=T
 set guioptions-=r
 set guioptions-=e
-set gfn=Menlo:h16
+set gfn=Inconsolata:h18
 autocmd! GUIEnter * set vb t_vb= " Disables bell
 
 " UltiSnips configuration
