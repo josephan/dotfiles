@@ -61,7 +61,7 @@ if (empty($TMUX))
 endif
 
 " Colorscheme
-colorscheme one
+colorscheme nofrils-light
 set background=dark
 
 syntax enable
