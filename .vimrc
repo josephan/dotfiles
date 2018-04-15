@@ -62,7 +62,7 @@ endif
 
 " Colorscheme
 colorscheme nofrils-light
-set background=dark
+set background=light
 
 syntax enable
 
