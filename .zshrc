@@ -3,6 +3,7 @@ export ZSH=$HOME/.oh-my-zsh
 export REACT_EDITOR=mvim
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export MONO_HOME=/Library/Frameworks/Mono.framework/Versions/Current
+export EDITOR=mvim
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -54,8 +55,11 @@ ZSH_THEME="crunch"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git jira elixir autojump)
 
+export JIRA_PREFIX=CORE-
+export JIRA_DEFAULT=dashboard
+
 # User configuration
-export PATH="/usr/local/bin:$HOME/.rbenv/shims:$HOME/miniconda3/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/Library/Android/sdk/platform-tools:/opt/local/bin:/opt/local/sbin:`yarn global bin`:$PATH"
+export PATH="$PATH:/usr/local/opt/python@2/libexec/bin:/usr/local/bin:$HOME/.rbenv/shims:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/Library/Android/sdk/platform-tools:/opt/local/bin:/opt/local/sbin:`yarn global bin`"
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -92,11 +96,10 @@ source $ZSH/oh-my-zsh.sh
 
 alias android-emulator="$HOME/Library/Android/sdk/tools/emulator -netdelay none -netspeed full -avd Nexus_6P_API_23"
 alias react-native-debugger="open \"rndebugger://set-debugger-loc?host=localhost&port=8081\""
-alias r="rails"
+alias r="bundle exec rails"
+alias rs="bundle exec rspec"
 alias v="mvim"
-alias python='python3'
 alias scheme="rlwrap scheme"
-alias python='/usr/local/bin/python2'
 
 export ERL_AFLAGS="-kernel shell_history enabled"
 
@@ -109,8 +112,6 @@ function finv () {
   deactivate
 }
 
-# Fuzzy-checkout
-# Uses fuzzy matching against git branch names for more lenient checkouts
 function fco {
 	local filter
 	if ! which fzf >/dev/null 2>&1; then
@@ -119,8 +120,8 @@ function fco {
 	fi
 
 	branch=`git branch --list \
-					| fzf --height=7 --min-height=5 --reverse --query="$1" --select-1 \
-					| sed -e 's/^[[:space:]\*]*//'`
+		| fzf --height=7 --min-height=5 --reverse --query="$1" --select-1 \
+		| sed -e 's/^[[:space:]\*]*//'`
 
 	[[ -n "$branch" ]] && git checkout "$branch"
 }
