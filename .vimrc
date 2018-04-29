@@ -46,6 +46,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'isRuslan/vim-es6'
 Plug 'jparise/vim-graphql'
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
 call plug#end()
 " Plug setup ends here
