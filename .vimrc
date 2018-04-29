@@ -12,6 +12,7 @@ Plug 'Valloric/YouCompleteMe'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'godlygeek/tabular'
+Plug 'justinmk/vim-sneak'
 
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-fugitive'
@@ -291,3 +292,7 @@ endfunction
 nnoremap <expr> i IndentWithI()
 
 inoremap <leader>; <C-o>A;
+
+" vim-sneak
+map t <Plug>Sneak_s
+map T <Plug>Sneak_S
