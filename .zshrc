@@ -55,7 +55,7 @@ ZSH_THEME="crunch"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git jira elixir autojump)
 
-export JIRA_PREFIX=CORE-
+export JIRA_PREFIX=SOCIAL-
 export JIRA_DEFAULT=dashboard
 
 # User configuration

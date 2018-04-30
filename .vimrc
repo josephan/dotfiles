@@ -155,9 +155,8 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " Python
 autocmd FileType python set shiftwidth=4|set tabstop=4|set softtabstop=4|set shiftround
 
-" javascript prettier and jsx config
-let g:jsx_ext_required = 0
-autocmd FileType javascript.jsx,javascript setlocal formatprg=prettier\ --stdin
+" prettier
+nmap <Leader>[ <Plug>(Prettier)
 
 if executable("ag")
    let g:ackprg = 'ag --nogroup --nocolor --column'
