@@ -1,22 +1,29 @@
-set nocompatible
-filetype off
-
-call plug#begin('~/.local/share/nvim/plugged')
+" Plug setup
+call plug#begin('~/.vim/plugged')
 
 Plug 'VundleVim/Vundle.vim'
 
-Plug 'joshdick/onedark.vim'
+Plug 'rakr/vim-one'
+Plug 'robertmeta/nofrils'
 
 Plug 'vim-scripts/a.vim'
+Plug 'vim-scripts/SearchComplete'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'godlygeek/tabular'
+Plug 'justinmk/vim-sneak'
 
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-rhubarb'
 
 Plug 'scrooloose/nerdtree'
-Plug 'kien/ctrlp.vim'
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
 Plug 'tomtom/tcomment_vim'
 Plug 'thoughtbot/vim-rspec'
 Plug 'mileszs/ack.vim'
@@ -24,22 +31,29 @@ Plug 'mattn/emmet-vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'terryma/vim-multiple-cursors'
 
+Plug 'pbrisbin/vim-mkdir'
+Plug 'alvan/vim-closetag'
+Plug 'craigemery/vim-autotag'
+
 Plug 'elixir-lang/vim-elixir'
-Plug 'slashmili/alchemist.vim'
 Plug 'avdgaag/vim-phoenix'
+Plug 'mhinz/vim-mix-format'
+Plug 'slashmili/alchemist.vim'
+
+Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-rbenv'
 
 Plug 'janko-m/vim-test'
 Plug 'suan/vim-instant-markdown'
-Plug 'Omnisharp/omnisharp-vim'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'isRuslan/vim-es6'
-
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'sbdchd/neoformat'
+Plug 'jparise/vim-graphql'
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
 call plug#end()
-filetype plugin indent on
+" Plug setup ends here
 
 " True color support for iTerm2 for one
 if (empty($TMUX))
@@ -52,15 +66,19 @@ if (empty($TMUX))
 endif
 
 " Colorscheme
-colorscheme onedark
+colorscheme one
 set background=dark
 
 syntax enable
-syntax on
 
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o " disables autocomment on newline
+
+" Inserts a newline and indent
+inoremap <leader><CR> <CR><C-o>==<C-o>O
 set tabstop=2      " number of visual spaces per TAB
 set softtabstop=2  " number of space in tab when editing 
 set shiftwidth=2   " number of spaces with reindent operations
+set linespace=3    " number of pixels inbetween each line
 set expandtab      " turns TAB into spaces
 set noswapfile     " disables .swp files being created
 
@@ -120,14 +138,14 @@ noremap <S-Tab> <c-w>w
 nmap gb :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 let g:NERDTreeWinSize = 22 
-let NERDTreeIgnore = ['\.DS_Store$']
+let NERDTreeIgnore=['\.DS_Store$']
+let g:NERDTreeChDirMode=2
 
 " MacVim configs
 set guioptions-=L
 set guioptions-=T
 set guioptions-=r
 set guioptions-=e
-set gfn=Menlo:h16
 autocmd! GUIEnter * set vb t_vb= " Disables bell
 
 " UltiSnips configuration
@@ -137,27 +155,22 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " file specific vim configs
 " Python
-autocmd FileType python set textwidth=79|set shiftwidth=4|set tabstop=4|set softtabstop=4|set shiftround
+autocmd FileType python set shiftwidth=4|set tabstop=4|set softtabstop=4|set shiftround
 
-if executable("ag")
-   let g:ackprg = 'ag --nogroup --nocolor --column'
+" prettier
+nmap <Leader>[ <Plug>(Prettier)
 
-   " Use Ag over Grep
-   set grepprg=ag\ --nogroup\ --nocolor\ -U
-
-   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-   let g:ctrlp_user_command = 'ag %s -l --nocolor -g "" -U --hidden'
-
-   " ag is fast enough that CtrlP doesn't need to cache
-   let g:ctrlp_use_caching = 0
-endif
-
-let g:ctrlp_custom_ignore = {
-           \ 'dir': 'deps\|bower_components\|build\|dist\|docs\|export\|node_modules\|DS_Store\|git\|priv\/static$',
-           \ 'file': '\.meta$'
-           \ }
+" fzf (ctrlp)
+let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+let g:fzf_layout = { 'down': '~25%' }
+nnoremap <silent> <C-p> :Files<cr>
 
 let g:user_emmet_leader_key='<C-Z>'
+let g:user_emmet_settings = {
+\  'javascript.jsx' : {
+\      'extends' : 'jsx',
+\  },
+\}
 
 " Search for selected text, forwards or backwards.
 vnoremap <silent> * :<C-U>
@@ -211,18 +224,65 @@ let test#strategy = "iterm"
 nmap <silent> <leader>t :TestFile<CR>
 nmap <silent> <leader>T :TestNearest<CR>
 
-" Use deoplete
+" YouCompleteMe configs
+let g:ycm_autoclose_preview_window_after_insertion = 1
+
+" Ultisnips and YouCompleteMe plays nice
+function! g:UltiSnips_Complete()
+  call UltiSnips#ExpandSnippet()
+  if g:ulti_expand_res == 0
+    if pumvisible()
+      return "\<C-n>"
+    else
+      call UltiSnips#JumpForwards()
+      if g:ulti_jump_forwards_res == 0
+        return "\<TAB>"
+      endif
+    endif
+  endif
+  return ""
+endfunction
+
+function! g:UltiSnips_Reverse()
+  call UltiSnips#JumpBackwards()
+  if g:ulti_jump_backwards_res == 0
+    return "\<C-P>"
+  endif
+
+  return ""
+endfunction
+
+if !exists("g:UltiSnipsJumpForwardTrigger")
+  let g:UltiSnipsJumpForwardTrigger = "<tab>"
+endif
+
+if !exists("g:UltiSnipsJumpBackwardTrigger")
+  let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+endif
+
+au InsertEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger     . " <C-R>=g:UltiSnips_Complete()<cr>"
+au InsertEnter * exec "inoremap <silent> " .     g:UltiSnipsJumpBackwardTrigger . " <C-R>=g:UltiSnips_Reverse()<cr>"
+
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+
+" ctags config
+map <C-\> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+
+"smart indent when entering insert mode with i on empty lines
+function! IndentWithI()
+    if len(getline('.')) == 0
+        return "\"_cc"
+    else
+        return "i"
+    endif
+endfunction
+nnoremap <expr> i IndentWithI()
+
+inoremap <leader>; <C-o>A;
+
+" vim-sneak
+map t <Plug>Sneak_s
+map T <Plug>Sneak_S
+
+" deoplete
 let g:deoplete#enable_at_startup = 1
-
-" Tan for deoplete
-inoremap <silent><expr> <TAB>
-    \ pumvisible() ? "\<C-n>" :
-    \ <SID>check_back_space() ? "\<TAB>" :
-    \ deoplete#mappings#manual_complete()
-function! s:check_back_space() abort "{{{
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~ '\s'
-endfunction"}}}
-
-" neoformat config
-autocmd BufWritePre *.js Neoformat

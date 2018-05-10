@@ -36,6 +36,7 @@ Plug 'craigemery/vim-autotag'
 Plug 'elixir-lang/vim-elixir'
 Plug 'avdgaag/vim-phoenix'
 Plug 'mhinz/vim-mix-format'
+Plug 'slashmili/alchemist.vim'
 
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'

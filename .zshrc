@@ -1,9 +1,9 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
-export REACT_EDITOR=mvim
+export REACT_EDITOR=vimr
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export MONO_HOME=/Library/Frameworks/Mono.framework/Versions/Current
-export EDITOR=mvim
+export EDITOR=vimr
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -59,7 +59,8 @@ export JIRA_PREFIX=SOCIAL-
 export JIRA_DEFAULT=dashboard
 
 # User configuration
-export PATH="$PATH:/usr/local/bin:$HOME/.rbenv/shims:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/Library/Android/sdk/platform-tools:/opt/local/bin:/opt/local/sbin:`yarn global bin`"
+export PATH="/usr/local/anaconda3/bin:$HOME/.rbenv/shims:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/Library/Android/sdk/platform-tools:/opt/local/bin:/opt/local/sbin:`yarn global bin`"
+export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -98,8 +99,10 @@ alias android-emulator="$HOME/Library/Android/sdk/tools/emulator -netdelay none 
 alias react-native-debugger="open \"rndebugger://set-debugger-loc?host=localhost&port=8081\""
 alias r="bundle exec rails"
 alias rs="bundle exec rspec"
-alias v="mvim"
+alias v="vimr"
 alias scheme="rlwrap scheme"
+alias k="kubectl"
+alias mt="MIX_ENV=test mix test"
 
 export ERL_AFLAGS="-kernel shell_history enabled"
 
