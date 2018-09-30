@@ -286,3 +286,13 @@ map T <Plug>Sneak_S
 
 " deoplete
 let g:deoplete#enable_at_startup = 1
+
+" ack config
+if executable("ag")
+   let g:ackprg = 'ag --nogroup --nocolor --column'
+
+   " Use Ag over Grep
+   set grepprg=ag\ --nogroup\ --nocolor\ -U
+endif
+
+nnoremap <Leader>a :Ack!<Space>
