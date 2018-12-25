@@ -55,9 +55,6 @@ ZSH_THEME="crunch"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git jira elixir autojump)
 
-export JIRA_PREFIX=SOCIAL-
-export JIRA_DEFAULT=dashboard
-
 # User configuration
 export PATH="/usr/local/anaconda3/bin:$HOME/.rbenv/shims:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/Library/Android/sdk/platform-tools:/opt/local/bin:/opt/local/sbin:`yarn global bin`"
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
@@ -106,15 +103,6 @@ alias mt="MIX_ENV=test mix test"
 
 export ERL_AFLAGS="-kernel shell_history enabled"
 
-# Filter theScore AWS Inventory
-function finv () {
-  pushd $HOME/code/ansible-playbooks
-  test -n "$ANSIBLE_VROOT" || source ./ansible/bin/activate
-  ./scripts/filter-inventory $*
-  popd
-  deactivate
-}
-
 function fco {
 	local filter
 	if ! which fzf >/dev/null 2>&1; then
@@ -132,7 +120,3 @@ function fco {
 eval "$(direnv hook zsh)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-. $HOME/.asdf/asdf.sh
-
-. $HOME/.asdf/completions/asdf.bash
