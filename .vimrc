@@ -50,6 +50,10 @@ Plug 'isRuslan/vim-es6'
 Plug 'jparise/vim-graphql'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
+Plug 'leafgarland/typescript-vim'
+Plug 'Quramy/tsuquyomi'
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+
 call plug#end()
 " Plug setup ends here
 
