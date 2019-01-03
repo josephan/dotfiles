@@ -46,9 +46,13 @@ Plug 'tpope/vim-rbenv'
 
 " Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
-Plug 'leafgarland/typescript-vim'
 Plug 'janko-m/vim-test'
 Plug 'suan/vim-instant-markdown'
+
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
+Plug 'Shougo/denite.nvim'
+
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'isRuslan/vim-es6'
@@ -168,39 +172,6 @@ set guioptions-=r
 set guioptions-=e
 autocmd! GUIEnter * set vb t_vb= " Disables bell
 
-" YouCompleteMe configs
-let g:ycm_autoclose_preview_window_after_insertion = 1
-
-" Ultisnips and YouCompleteMe plays nice
-function! g:UltiSnips_Complete()
-  call UltiSnips#ExpandSnippet()
-  if g:ulti_expand_res == 0
-    if pumvisible()
-      return "\<C-n>"
-    else
-      call UltiSnips#JumpForwards()
-      if g:ulti_jump_forwards_res == 0
-        return "\<TAB>"
-      endif
-    endif
-  endif
-  return ""
-endfunction
-
-function! g:UltiSnips_Reverse()
-  call UltiSnips#JumpBackwards()
-  if g:ulti_jump_backwards_res == 0
-    return "\<C-P>"
-  endif
-
-  return ""
-endfunction
-
-" UltiSnips configuration
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
 " file specific vim configs
 " Python
 autocmd FileType python set shiftwidth=4|set tabstop=4|set softtabstop=4|set shiftround
@@ -257,19 +228,6 @@ let test#strategy = "iterm"
 nmap <silent> <leader>t :TestFile<CR>
 nmap <silent> <leader>T :TestNearest<CR>
 
-if !exists("g:UltiSnipsJumpForwardTrigger")
-  let g:UltiSnipsJumpForwardTrigger = "<tab>"
-endif
-
-if !exists("g:UltiSnipsJumpBackwardTrigger")
-  let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-endif
-
-au InsertEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger     . " <C-R>=g:UltiSnips_Complete()<cr>"
-au InsertEnter * exec "inoremap <silent> " .     g:UltiSnipsJumpBackwardTrigger . " <C-R>=g:UltiSnips_Reverse()<cr>"
-
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-
 " ctags config
 map <C-\> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
@@ -306,3 +264,6 @@ if executable("ag")
 endif
 
 nnoremap <Leader>a :Ack!<Space>
+
+" deoplete <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
