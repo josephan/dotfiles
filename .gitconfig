@@ -2,7 +2,7 @@
 	ui = true
 [user]
 	name = Joseph An
-	email = an.joseph891@gmail.com
+	email = joseph@biorender.io
 [filter "lfs"]
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
