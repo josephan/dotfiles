@@ -2,13 +2,13 @@
 	ui = true
 [user]
 	name = Joseph An
-	email = joseph@biorender.io
+	email = an.joseph891@gmail.com
 [filter "lfs"]
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
 	required = true
 [core]
-        editor = vim
+        editor = nvim
 	excludesfile = /Users/joseph/.gitignore_global
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
