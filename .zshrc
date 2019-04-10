@@ -3,7 +3,7 @@ export ZSH=$HOME/.oh-my-zsh
 export REACT_EDITOR=vimr
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export MONO_HOME=/Library/Frameworks/Mono.framework/Versions/Current
-export EDITOR=vimr
+export EDITOR=nvim
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -101,6 +101,7 @@ alias v="vimr"
 alias scheme="rlwrap scheme"
 alias k="kubectl"
 alias mt="MIX_ENV=test mix test"
+alias python="python3"
 
 export ERL_AFLAGS="-kernel shell_history enabled"
 
@@ -122,5 +123,6 @@ eval "$(direnv hook zsh)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-export NVM_DIR=~/.nvm
-source $(brew --prefix nvm)/nvm.sh
+. $HOME/.asdf/asdf.sh
+
+. $HOME/.asdf/completions/asdf.bash
