@@ -13,6 +13,7 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'godlygeek/tabular'
 Plug 'justinmk/vim-sneak'
+" Plug 'w0rp/ale'
 
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-fugitive'
@@ -49,8 +50,8 @@ Plug 'tpope/vim-rbenv'
 Plug 'janko-m/vim-test'
 Plug 'suan/vim-instant-markdown'
 
-Plug 'HerringtonDarkholme/yats.vim'
-Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
+" Plug 'HerringtonDarkholme/yats.vim'
+" Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 Plug 'Shougo/denite.nvim'
 
 Plug 'pangloss/vim-javascript'
@@ -62,6 +63,8 @@ Plug 'digitaltoad/vim-pug'
 Plug 'mustache/vim-mustache-handlebars'
 
 Plug 'hashivim/vim-terraform'
+
+Plug 'elmcast/elm-vim'
 
 call plug#end()
 " Plug setup ends here
@@ -132,6 +135,8 @@ nnoremap k gk
 " move to beginning/end of line
 nnoremap B ^
 nnoremap E $
+vmap B ^
+vmap E $
 
 " $/^ doesn't do anything
 nnoremap $ <nop>
@@ -175,6 +180,11 @@ autocmd! GUIEnter * set vb t_vb= " Disables bell
 " file specific vim configs
 " Python
 autocmd FileType python set shiftwidth=4|set tabstop=4|set softtabstop=4|set shiftround
+let g:python_host_prog = '/usr/local/bin/python'
+let g:python3_host_prog = '/usr/local/bin/python3'
+
+" Elm
+autocmd FileType elm set shiftwidth=4|set tabstop=4|set softtabstop=4|set shiftround
 
 " prettier
 nmap <Leader>[ <Plug>(Prettier)
@@ -267,3 +277,6 @@ nnoremap <Leader>a :Ack!<Space>
 
 " deoplete <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
+" ale configs
+" let g:ale_sign_column_always = 1
