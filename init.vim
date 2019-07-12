@@ -25,6 +25,7 @@ Plug 'tpope/vim-rhubarb'
 Plug 'scrooloose/nerdtree'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/vim-easy-align'
 Plug 'tomtom/tcomment_vim'
 Plug 'thoughtbot/vim-rspec'
 Plug 'mileszs/ack.vim'
@@ -34,7 +35,6 @@ Plug 'terryma/vim-multiple-cursors'
 
 Plug 'pbrisbin/vim-mkdir'
 Plug 'alvan/vim-closetag'
-Plug 'craigemery/vim-autotag'
 Plug 'Chiel92/vim-autoformat'
 
 Plug 'elixir-lang/vim-elixir'
@@ -61,6 +61,8 @@ Plug 'jparise/vim-graphql'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'digitaltoad/vim-pug'
 Plug 'mustache/vim-mustache-handlebars'
+Plug 'yalesov/vim-emblem'
+Plug 'kchmck/vim-coffee-script'
 
 Plug 'hashivim/vim-terraform'
 
