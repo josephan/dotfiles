@@ -8,12 +8,13 @@ Plug 'robertmeta/nofrils'
 
 Plug 'vim-scripts/a.vim'
 Plug 'vim-scripts/SearchComplete'
+
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+
 Plug 'godlygeek/tabular'
 Plug 'justinmk/vim-sneak'
-" Plug 'w0rp/ale'
 
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-fugitive'
@@ -59,14 +60,6 @@ Plug 'mxw/vim-jsx'
 Plug 'isRuslan/vim-es6'
 Plug 'jparise/vim-graphql'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
-Plug 'digitaltoad/vim-pug'
-Plug 'mustache/vim-mustache-handlebars'
-Plug 'yalesov/vim-emblem'
-Plug 'kchmck/vim-coffee-script'
-
-Plug 'hashivim/vim-terraform'
-
-Plug 'elmcast/elm-vim'
 
 call plug#end()
 " Plug setup ends here
