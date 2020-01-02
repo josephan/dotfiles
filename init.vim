@@ -1,12 +1,9 @@
 " Plug setup
 call plug#begin('~/.vim/plugged')
 
-Plug 'VundleVim/Vundle.vim'
-
 Plug 'rakr/vim-one'
 Plug 'robertmeta/nofrils'
 
-Plug 'vim-scripts/a.vim'
 Plug 'vim-scripts/SearchComplete'
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
