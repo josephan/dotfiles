@@ -156,7 +156,7 @@ vmap <Leader>P "+P
 
 " Switch between split views
 noremap <Tab> <c-w><c-w>
-noremap <S-Tab> <c-w>w
+noremap <S-Tab> <c-w>h
 
 " NERDTree configuration
 nmap gb :NERDTreeToggle<CR>
