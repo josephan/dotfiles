@@ -31,15 +31,19 @@ Plug 'mileszs/ack.vim'
 Plug 'mattn/emmet-vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'terryma/vim-smooth-scroll'
 
 Plug 'pbrisbin/vim-mkdir'
 Plug 'alvan/vim-closetag'
-Plug 'Chiel92/vim-autoformat'
+" Plug 'Chiel92/vim-autoformat'
 
+" elixir/phoenix related plugins
 Plug 'elixir-lang/vim-elixir'
 Plug 'avdgaag/vim-phoenix'
 Plug 'slashmili/alchemist.vim'
+Plug 'mhinz/vim-mix-format'
 
+" ruby/rails related plugins
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rbenv'
@@ -49,15 +53,18 @@ Plug 'tpope/vim-rbenv'
 Plug 'janko-m/vim-test'
 Plug 'suan/vim-instant-markdown'
 
-" Plug 'HerringtonDarkholme/yats.vim'
-" Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 Plug 'Shougo/denite.nvim'
 
+" javascript related plugins
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'isRuslan/vim-es6'
 Plug 'jparise/vim-graphql'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+
+Plug 'zirrostig/vim-jack-syntax'
 
 call plug#end()
 " Plug setup ends here
@@ -232,7 +239,7 @@ nmap <silent> <leader>t :TestFile<CR>
 nmap <silent> <leader>T :TestNearest<CR>
 
 " ctags config
-map <C-\> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+map <C-\> :vsp <CR><C-]>zz
 
 "smart indent when entering insert mode with i on empty lines
 function! IndentWithI()
@@ -244,7 +251,7 @@ function! IndentWithI()
 endfunction
 nnoremap <expr> i IndentWithI()
 
-inoremap <leader>; <C-o>A;
+inoremap <leader>a <C-o>A
 
 " vim-sneak
 map t <Plug>Sneak_s
@@ -271,5 +278,11 @@ nnoremap <Leader>a :Ack!<Space>
 " deoplete <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
-" ale configs
-" let g:ale_sign_column_always = 1
+" format elixir files on save
+let g:mix_format_on_save = 1
+
+" smooth scroll
+noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
+noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
+noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
+noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
