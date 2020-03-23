@@ -2,7 +2,7 @@
 export ZSH=$HOME/.oh-my-zsh
 export REACT_EDITOR=vimr
 export ANDROID_HOME=$HOME/Library/Android/sdk
-export MONO_HOME=/Library/Frameworks/Mono.framework/Versions/Current
+export MONO_HOME=/Library/Frameworks/Mono.framework/Home
 export EDITOR=nvim
 
 # Set name of the theme to load.
@@ -58,6 +58,7 @@ plugins=(git jira elixir autojump)
 # User configuration
 export PATH="/usr/local/anaconda3/bin:$HOME/.rbenv/shims:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/Library/Android/sdk/platform-tools:/opt/local/bin:/opt/local/sbin:`yarn global bin`"
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
+export PATH=$MONO_HOME/bin:$PATH
 export PATH=/Applications/calibre.app/Contents/console.app/Contents/MacOS/:~/Desktop/nand2tetris/tools:$PATH
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 # export MANPATH="/usr/local/man:$MANPATH"
