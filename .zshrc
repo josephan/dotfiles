@@ -56,7 +56,7 @@ ZSH_THEME="crunch"
 plugins=(git jira elixir autojump)
 
 # User configuration
-export PATH="/usr/local/anaconda3/bin:$HOME/.rbenv/shims:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/Library/Android/sdk/platform-tools:/opt/local/bin:/opt/local/sbin:`yarn global bin`"
+export PATH="$HOME/.rbenv/shims:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/Library/Android/sdk/platform-tools:/opt/local/bin:/opt/local/sbin:`yarn global bin`"
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 export PATH=$MONO_HOME/bin:$PATH
 export PATH=/Applications/calibre.app/Contents/console.app/Contents/MacOS/:~/Desktop/nand2tetris/tools:$PATH
