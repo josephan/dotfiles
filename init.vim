@@ -3,6 +3,7 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'rakr/vim-one'
 Plug 'joshdick/onedark.vim'
+Plug 'junegunn/seoul256.vim'
 Plug 'robertmeta/nofrils'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -59,7 +60,6 @@ Plug 'jparise/vim-graphql'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
 Plug 'OmniSharp/omnisharp-vim'
-Plug 'OrangeT/vim-csharp'
 
 Plug 'dense-analysis/ale'
 
@@ -68,8 +68,8 @@ call plug#end()
 
 
 " Colorscheme
-colorscheme onedark
-" set background=dark
+colorscheme one
+set background=dark
 " au VimEnter * colorscheme one
 
 syntax enable
@@ -127,11 +127,9 @@ set hlsearch       " highlight matches
 " turn off search higlight
 nmap <silent> z/ :nohlsearch<CR>
 
-" switch between split panes
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+" Switch between split views
+noremap <Tab> <c-w><c-w>
+noremap <S-Tab> <c-w>h
 
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow
@@ -197,13 +195,14 @@ let g:OmniSharp_timeout = 5
 let g:ale_linters = {
 \ 'cs': ['OmniSharp']
 \}
-let g:OmniSharp_highlight_types = 3
+let g:OmniSharp_server_use_mono = 1
+
 
 " prettier
 nmap <Leader>[ <Plug>(Prettier)
 
 " fzf (ctrlp)
-let $FZF_DEFAULT_COMMAND = 'rg --files'
+let $FZF_DEFAULT_COMMAND = 'rg --files --hidden'
 let g:fzf_layout = { 'down': '~20%' }
 nnoremap <silent> <C-p> :Files<cr>
 
@@ -283,9 +282,6 @@ nnoremap <Leader>a :Ack!<Space>
 " format elixir files on save
 let g:mix_format_on_save = 1
 
-" omnisharp
-let g:OmniSharp_server_use_mono = 1
-
 """"""""""""""""""""""""""""""""""""""""""""""
 " coc.nvim setup
 """"""""""""""""""""""""""""""""""""""""""""""
@@ -309,20 +305,6 @@ set shortmess+=c
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
 set signcolumn=yes
-
-" Use tab for trigger completion with characters ahead and navigate.
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
 
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
@@ -383,12 +365,6 @@ xmap af <Plug>(coc-funcobj-a)
 omap if <Plug>(coc-funcobj-i)
 omap af <Plug>(coc-funcobj-a)
 
-" Use <TAB> for selections ranges.
-" NOTE: Requires 'textDocument/selectionRange' support from the language server.
-" coc-tsserver, coc-python are the examples of servers that support it.
-nmap <silent> <TAB> <Plug>(coc-range-select)
-xmap <silent> <TAB> <Plug>(coc-range-select)
-
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
 
@@ -421,7 +397,17 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
-imap <tab> <Plug>(coc-snippets-expand)
-let g:coc_snippet_next = '<TAB>'
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+let g:coc_snippet_next = '<tab>'
 let g:coc_node_path = '/var/folders/nb/654f7t4s1ls9sh10lfcq7m300000gn/T/fnm-shell-6745658/bin/node'
 let g:coc_global_extensions=['coc-omnisharp', 'coc-css', 'coc-elixir', 'coc-html', 'coc-json', 'coc-tsserver', 'coc-solargraph', 'coc-snippets']

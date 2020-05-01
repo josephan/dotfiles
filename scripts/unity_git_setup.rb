@@ -9,5 +9,6 @@ file_dir = ENV['HOME'] + '/dotfiles/scripts/'
 
 FileUtils.cp(file_dir + 'unity_gitignore.txt', './.gitignore')
 FileUtils.cp(file_dir + 'unity_gitattributes.txt', './.gitattributes')
+FileUtils.cp(file_dir + 'unity_gitattributes.txt', './.ignore')
 
 puts('Complete!')
