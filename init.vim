@@ -22,7 +22,7 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 
 Plug 'scrooloose/nerdtree'
-Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'tomtom/tcomment_vim'
@@ -50,7 +50,7 @@ Plug 'tpope/vim-rbenv'
 " Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 Plug 'janko-m/vim-test'
-Plug 'suan/vim-instant-markdown'
+Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
 
 " javascript related plugins
 Plug 'pangloss/vim-javascript'
@@ -180,11 +180,11 @@ set guioptions-=r
 set guioptions-=e
 autocmd! GUIEnter * set vb t_vb= " Disables bell
 
+set guifont=Inconsolata:h13
+
 " file specific vim configs
 " Python
 autocmd FileType python set shiftwidth=4|set tabstop=4|set softtabstop=4|set shiftround
-let g:python_host_prog = '/usr/local/bin/python'
-let g:python3_host_prog = '/usr/local/bin/python3'
 
 " Elm
 autocmd FileType elm set shiftwidth=4|set tabstop=4|set softtabstop=4|set shiftround
@@ -409,5 +409,5 @@ function! s:check_back_space() abort
 endfunction
 
 let g:coc_snippet_next = '<tab>'
-let g:coc_node_path = '/var/folders/nb/654f7t4s1ls9sh10lfcq7m300000gn/T/fnm-shell-6745658/bin/node'
+" let g:coc_node_path = '/tmp/fnm-shell-7405821/bin/node'
 let g:coc_global_extensions=['coc-omnisharp', 'coc-css', 'coc-elixir', 'coc-html', 'coc-json', 'coc-tsserver', 'coc-solargraph', 'coc-snippets']
