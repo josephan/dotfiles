@@ -58,3 +58,7 @@ noremap <Tab> <c-w><c-w>
 noremap <S-Tab> <c-w>w
 
 nnoremap <C-p> :vsc MonoDevelop.Ide.Commands.SearchCommands.GotoFile <CR>
+
+" comment selection
+nmap gc :vsc Edit.ToggleLineComment<CR>
+vmap gc :vsc Edit.ToggleLineComment<CR>
