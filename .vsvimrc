@@ -65,4 +65,4 @@ vmap gc :vsc Edit.ToggleLineComment<CR>
 
 " Insert semicolon
 nnoremap <S-Enter> A;<Esc>^
-inoremap <S-Enter> <Esc>A;<Esc>^
+inoremap <S-Enter> <Esc>A;
