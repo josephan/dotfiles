@@ -1,5 +1,5 @@
 " set tabstop=4      " number of visual spaces per TAB
-" set softtabstop=4  " number of space in tab when editing 
+" set softtabstop=4  " number of space in tab when editing
 " set shiftwidth=4   " number of spaces with reindent operations
 " set expandtab      " turns TAB into spaces
 "
@@ -62,3 +62,7 @@ nnoremap <C-p> :vsc MonoDevelop.Ide.Commands.SearchCommands.GotoFile <CR>
 " comment selection
 nmap gc :vsc Edit.ToggleLineComment<CR>
 vmap gc :vsc Edit.ToggleLineComment<CR>
+
+" Insert semicolon
+nnoremap <S-Enter> A;<Esc>^
+inoremap <S-Enter> <Esc>A;<Esc>^
