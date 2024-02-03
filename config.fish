@@ -27,6 +27,7 @@ alias rasm="cd /d/UnityGames/RobotAssembly2022"
 # jethrokuan/fzf
 # jhillyerd/plugin-git 
 # fisher install jethrokuan/z
+set -U Z_CMD "j"
 
 # Windows Terminal Fish Config:
 # {
