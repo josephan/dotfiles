@@ -1,0 +1,43 @@
+if status is-interactive
+    # Commands to run in interactive sessions can go here
+end
+
+set fish_prompt_pwd_dir_length 0
+
+function fish_prompt
+    # Set options for the fish_git_prompt
+    set -g __fish_git_prompt_showdirtystate yes
+    set -g __fish_git_prompt_char_cleanstate ' ✔'
+    set -g __fish_git_prompt_char_dirtystate '✗'
+    set -g __fish_git_prompt_color_branch green
+    set -g __fish_git_prompt_color_cleanstate green
+    set -g __fish_git_prompt_color_dirtystate red
+    set -g __fish_git_prompt_showupstream none
+    set -g __fish_git_prompt_show_informative_status no
+    set -g __fish_git_prompt_showstashstate no
+    set -g __fish_git_prompt_showuntrackedfiles no
+
+    # Show current directory
+    set_color green
+    echo -n (prompt_pwd)
+
+    # Show Git branch and status if in a Git repository
+    set_color normal
+    fish_git_prompt
+
+    # Show the prompt symbol
+    echo -n ' > '
+end
+
+# add homebrew to path
+set -U fish_user_paths /opt/homebrew/bin $fish_user_paths
+# add npm to path
+set -U fish_user_paths ~/.npm-global/bin $fish_user_paths
+
+# autojump
+[ -f /opt/homebrew/share/autojump/autojump.fish ]; and source /opt/homebrew/share/autojump/autojump.fish
+
+# asdf version manager
+source ~/.asdf/asdf.fish
+
+direnv hook fish | source
