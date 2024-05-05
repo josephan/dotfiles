@@ -39,3 +39,5 @@ set -U fish_user_paths ~/.npm-global/bin $fish_user_paths
 
 # asdf version manager
 source ~/.asdf/asdf.fish
+
+direnv hook fish | source
