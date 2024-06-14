@@ -41,3 +41,10 @@ set -U fish_user_paths ~/.npm-global/bin $fish_user_paths
 source ~/.asdf/asdf.fish
 
 direnv hook fish | source
+
+# llvm
+fish_add_path /opt/homebrew/opt/llvm/bin
+set -gx LDFLAGS "-L/opt/homebrew/opt/llvm/lib -L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++"
+set -gx CPPFLAGS "-I/opt/homebrew/opt/llvm/include"
+set -gx CXX clang++
+set -gx CC clang
